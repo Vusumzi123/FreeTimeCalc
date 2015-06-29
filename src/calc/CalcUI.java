@@ -12,7 +12,7 @@ package calc;
 public class CalcUI extends javax.swing.JFrame {
     
     public static String calcInput="", calcOutput="";
-    public static double result, temp;
+    public static double result, temp=0;
     /**
      * Creates new form CalcUI
      */
@@ -78,6 +78,11 @@ public class CalcUI extends javax.swing.JFrame {
         btnPlus.setFont(new java.awt.Font("Lucida MAC", 0, 24)); // NOI18N
         btnPlus.setForeground(new java.awt.Color(78, 78, 78));
         btnPlus.setText("+");
+        btnPlus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlusActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnPlus, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 70, 60));
 
         btn7.setBackground(new java.awt.Color(225, 234, 231));
@@ -217,6 +222,11 @@ public class CalcUI extends javax.swing.JFrame {
         jButton17.setFont(new java.awt.Font("Lucida MAC", 0, 24)); // NOI18N
         jButton17.setForeground(new java.awt.Color(254, 254, 254));
         jButton17.setText("=");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 70, 70));
 
         btnMinus.setBackground(new java.awt.Color(225, 234, 231));
@@ -307,14 +317,14 @@ public class CalcUI extends javax.swing.JFrame {
         calcInput = calcInput+"3";
         calcOutput =calcOutput +"3";
         txfResult.setText(calcOutput);
-        result = Double.parseDouble(calcOutput);
+        result = Double.parseDouble(calcInput);
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         calcInput = calcInput+"4";
         calcOutput =calcOutput +"4";
         txfResult.setText(calcOutput);
-        result = Double.parseDouble(calcOutput);
+        result = Double.parseDouble(calcInput);
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
@@ -358,6 +368,25 @@ public class CalcUI extends javax.swing.JFrame {
         txfResult.setText(calcOutput);
         result = Double.parseDouble(calcInput);
     }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void btnPlusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlusActionPerformed
+        
+        temp=new Operations().sum(temp, result);
+        result=temp;
+        calcOutput = calcOutput+"+";
+        calcInput="";
+        txfResult.setText(calcOutput);
+        
+    }//GEN-LAST:event_btnPlusActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        
+        temp=new Operations().sum(temp,result);
+        result=0;
+        calcInput="";
+        calcOutput=""+temp;
+        txfResult.setText(""+temp);
+    }//GEN-LAST:event_jButton17ActionPerformed
 
     /**
      * @param args the command line arguments

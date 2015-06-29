@@ -11,7 +11,9 @@ package calc;
  */
 public class Operations {
     
-    public void PressNum(String Input, String Output, int num ){
+    public double sum(double a, double b ){
+        
+        return(a+b);
     }
     
 }
