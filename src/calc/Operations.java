@@ -5,15 +5,17 @@
  */
 package calc;
 
+import java.math.BigDecimal;
 /**
  *
  * @author vuszi
  */
 public class Operations {
     
-    public double sum(double a, double b ){
+    public BigDecimal sum(BigDecimal a, BigDecimal b ){
         
-        return(a+b);
+        
+        return a.add(b);
     }
     
 }

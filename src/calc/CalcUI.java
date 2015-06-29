@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package calc;
+import java.math.BigDecimal;
 
 /**
  *
@@ -12,7 +13,7 @@ package calc;
 public class CalcUI extends javax.swing.JFrame {
     
     public static String calcInput="", calcOutput="";
-    public static double result, temp=0;
+    public static BigDecimal result, temp=BigDecimal.valueOf(0);
     /**
      * Creates new form CalcUI
      */
@@ -288,7 +289,7 @@ public class CalcUI extends javax.swing.JFrame {
         calcInput = calcInput+"1";
         calcOutput =calcOutput +"1";
         txfResult.setText(calcOutput);
-        result = Double.parseDouble(calcInput);
+        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -299,7 +300,7 @@ public class CalcUI extends javax.swing.JFrame {
         calcInput = calcInput+"0";
         calcOutput =calcOutput+"0";
         txfResult.setText(calcOutput);
-        result = Double.parseDouble(calcInput);
+        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
     }//GEN-LAST:event_btn0ActionPerformed
 
     private void txfResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfResultActionPerformed
@@ -310,63 +311,63 @@ public class CalcUI extends javax.swing.JFrame {
         calcInput = calcInput+"2";
         calcOutput =calcOutput +"2";
         txfResult.setText(calcOutput);
-        result = Double.parseDouble(calcInput);
+        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         calcInput = calcInput+"3";
         calcOutput =calcOutput +"3";
         txfResult.setText(calcOutput);
-        result = Double.parseDouble(calcInput);
+        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         calcInput = calcInput+"4";
         calcOutput =calcOutput +"4";
         txfResult.setText(calcOutput);
-        result = Double.parseDouble(calcInput);
+        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         calcInput = calcInput+"5";
         calcOutput =calcOutput+"5";
         txfResult.setText(calcOutput);
-        result = Double.parseDouble(calcInput);
+        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
     }//GEN-LAST:event_btn5ActionPerformed
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         calcInput = calcInput+"6";
         calcOutput =calcOutput+"6";
         txfResult.setText(calcOutput);
-        result = Double.parseDouble(calcInput);
+        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
     }//GEN-LAST:event_btn6ActionPerformed
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
         calcInput = calcInput+"7";
         calcOutput =calcOutput+"7";
         txfResult.setText(calcOutput);
-        result = Double.parseDouble(calcInput);
+        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
     }//GEN-LAST:event_btn7ActionPerformed
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
         calcInput = calcInput+"8";
         calcOutput =calcOutput+"8";
         txfResult.setText(calcOutput);
-        result = Double.parseDouble(calcInput);
+        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
     }//GEN-LAST:event_btn8ActionPerformed
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
         calcInput = calcInput+"9";
         calcOutput =calcOutput+"9";
         txfResult.setText(calcOutput);
-        result = Double.parseDouble(calcInput);
+        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
     }//GEN-LAST:event_btn9ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         calcInput = calcInput+".";
         calcOutput =calcOutput+".";
         txfResult.setText(calcOutput);
-        result = Double.parseDouble(calcInput);
+        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void btnPlusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlusActionPerformed
@@ -382,7 +383,7 @@ public class CalcUI extends javax.swing.JFrame {
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         
         temp=new Operations().sum(temp,result);
-        result=0;
+        result=BigDecimal.valueOf(0);
         calcInput="";
         calcOutput=""+temp;
         txfResult.setText(""+temp);

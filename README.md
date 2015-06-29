@@ -2,6 +2,7 @@
 Calculadora basica Con UI generada en NetBeans.
 
 v 0.01
+-funcionalidad basica sumas;
 @author vuszi
 
 
@@ -21,3 +22,9 @@ de este programa así como cuaquier error o descompostura
 que pudiera ocurrir en su equipo, al ejecutarlo,
 utiliselo bajo su propia responsabilidad.
 
+V. 0.02
+
+-cambiada utilizasión de variables de tipo double
+ por variables en bits (BigDecimal) para evitar el
+ error por redondeo
+-agregada respuesta del botón =;
