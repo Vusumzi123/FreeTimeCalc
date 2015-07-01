@@ -23,8 +23,12 @@ que pudiera ocurrir en su equipo, al ejecutarlo,
 utiliselo bajo su propia responsabilidad.
 
 V. 0.02
-
 -cambiada utilizasión de variables de tipo double
  por variables en bits (BigDecimal) para evitar el
  error por redondeo
 -agregada respuesta del botón =;
+
+v. 0.03
+-Rewritten code to clean the interface class,
+added class Actions that contains most of the code,
+arrenged methods to mach new simplier logic.
