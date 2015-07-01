@@ -13,9 +13,23 @@ import java.math.BigDecimal;
 public class Operations {
     
     public BigDecimal sum(BigDecimal a, BigDecimal b ){
-        
-        
+     
         return a.add(b);
+    }
+    
+    public BigDecimal subs(BigDecimal a, BigDecimal b){
+        
+        return a.subtract(b);
+    }
+    
+    public BigDecimal div(BigDecimal a, BigDecimal b){
+        
+        return a.divide(b);
+    }
+    
+    public BigDecimal mult(BigDecimal a, BigDecimal b){
+        
+        return a.multiply(b);
     }
     
 }

@@ -12,8 +12,8 @@ import java.math.BigDecimal;
  */
 public class CalcUI extends javax.swing.JFrame {
     
-    public static String calcInput="", calcOutput="";
-    public static BigDecimal result, temp=BigDecimal.valueOf(0);
+    private Actions act = new Actions();
+    
     /**
      * Creates new form CalcUI
      */
@@ -45,9 +45,9 @@ public class CalcUI extends javax.swing.JFrame {
         btnAC = new javax.swing.JButton();
         btn3 = new javax.swing.JButton();
         btn1 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
+        btnPoint = new javax.swing.JButton();
         btn0 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
+        btnEq = new javax.swing.JButton();
         btnMinus = new javax.swing.JButton();
         btn2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -134,6 +134,11 @@ public class CalcUI extends javax.swing.JFrame {
         btnMult.setFont(new java.awt.Font("Lucida MAC", 0, 24)); // NOI18N
         btnMult.setForeground(new java.awt.Color(78, 78, 78));
         btnMult.setText("x");
+        btnMult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMultActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnMult, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 70, 60));
 
         btn4.setBackground(new java.awt.Color(225, 234, 231));
@@ -197,16 +202,16 @@ public class CalcUI extends javax.swing.JFrame {
         });
         getContentPane().add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 70, 70));
 
-        jButton15.setBackground(new java.awt.Color(225, 234, 231));
-        jButton15.setFont(new java.awt.Font("Lucida MAC", 0, 24)); // NOI18N
-        jButton15.setForeground(new java.awt.Color(78, 78, 78));
-        jButton15.setText(",");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        btnPoint.setBackground(new java.awt.Color(225, 234, 231));
+        btnPoint.setFont(new java.awt.Font("Lucida MAC", 0, 24)); // NOI18N
+        btnPoint.setForeground(new java.awt.Color(78, 78, 78));
+        btnPoint.setText(",");
+        btnPoint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                btnPointActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 70, 70));
+        getContentPane().add(btnPoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 70, 70));
 
         btn0.setBackground(new java.awt.Color(225, 234, 231));
         btn0.setFont(new java.awt.Font("Lucida MAC", 0, 24)); // NOI18N
@@ -219,21 +224,26 @@ public class CalcUI extends javax.swing.JFrame {
         });
         getContentPane().add(btn0, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 70, 70));
 
-        jButton17.setBackground(new java.awt.Color(86, 189, 225));
-        jButton17.setFont(new java.awt.Font("Lucida MAC", 0, 24)); // NOI18N
-        jButton17.setForeground(new java.awt.Color(254, 254, 254));
-        jButton17.setText("=");
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
+        btnEq.setBackground(new java.awt.Color(86, 189, 225));
+        btnEq.setFont(new java.awt.Font("Lucida MAC", 0, 24)); // NOI18N
+        btnEq.setForeground(new java.awt.Color(254, 254, 254));
+        btnEq.setText("=");
+        btnEq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
+                btnEqActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 70, 70));
+        getContentPane().add(btnEq, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 70, 70));
 
         btnMinus.setBackground(new java.awt.Color(225, 234, 231));
         btnMinus.setFont(new java.awt.Font("Lucida MAC", 0, 24)); // NOI18N
         btnMinus.setForeground(new java.awt.Color(78, 78, 78));
         btnMinus.setText("-");
+        btnMinus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinusActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnMinus, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 70, 60));
 
         btn2.setBackground(new java.awt.Color(225, 234, 231));
@@ -281,15 +291,12 @@ public class CalcUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDivActionPerformed
-        // TODO add your handling code here:
+        txfResult.setText(act.operatorPress('÷'));
     }//GEN-LAST:event_btnDivActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         
-        calcInput = calcInput+"1";
-        calcOutput =calcOutput +"1";
-        txfResult.setText(calcOutput);
-        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
+        txfResult.setText(act.numPress('1'));
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -297,10 +304,7 @@ public class CalcUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
-        calcInput = calcInput+"0";
-        calcOutput =calcOutput+"0";
-        txfResult.setText(calcOutput);
-        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
+        txfResult.setText(act.numPress('0'));
     }//GEN-LAST:event_btn0ActionPerformed
 
     private void txfResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfResultActionPerformed
@@ -308,86 +312,77 @@ public class CalcUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txfResultActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
-        calcInput = calcInput+"2";
-        calcOutput =calcOutput +"2";
-        txfResult.setText(calcOutput);
-        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
+       txfResult.setText(act.numPress('2'));
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
-        calcInput = calcInput+"3";
-        calcOutput =calcOutput +"3";
-        txfResult.setText(calcOutput);
-        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
+        txfResult.setText(act.numPress('3'));
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
-        calcInput = calcInput+"4";
-        calcOutput =calcOutput +"4";
-        txfResult.setText(calcOutput);
-        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
+        txfResult.setText(act.numPress('4'));
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
-        calcInput = calcInput+"5";
-        calcOutput =calcOutput+"5";
-        txfResult.setText(calcOutput);
-        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
+        txfResult.setText(act.numPress('5'));
     }//GEN-LAST:event_btn5ActionPerformed
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
-        calcInput = calcInput+"6";
-        calcOutput =calcOutput+"6";
-        txfResult.setText(calcOutput);
-        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
+        txfResult.setText(act.numPress('6'));
     }//GEN-LAST:event_btn6ActionPerformed
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
-        calcInput = calcInput+"7";
-        calcOutput =calcOutput+"7";
-        txfResult.setText(calcOutput);
-        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
+        txfResult.setText(act.numPress('7'));
     }//GEN-LAST:event_btn7ActionPerformed
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
-        calcInput = calcInput+"8";
-        calcOutput =calcOutput+"8";
-        txfResult.setText(calcOutput);
-        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
+        txfResult.setText(act.numPress('8'));
     }//GEN-LAST:event_btn8ActionPerformed
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
-        calcInput = calcInput+"9";
-        calcOutput =calcOutput+"9";
-        txfResult.setText(calcOutput);
-        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
+        txfResult.setText(act.numPress('9'));
     }//GEN-LAST:event_btn9ActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        calcInput = calcInput+".";
-        calcOutput =calcOutput+".";
-        txfResult.setText(calcOutput);
-        result = BigDecimal.valueOf(Double.parseDouble(calcInput));
-    }//GEN-LAST:event_jButton15ActionPerformed
+    private void btnPointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPointActionPerformed
+        txfResult.setText(act.numPress('.'));
+    }//GEN-LAST:event_btnPointActionPerformed
 
     private void btnPlusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlusActionPerformed
         
-        temp=new Operations().sum(temp, result);
-        result=temp;
-        calcOutput = calcOutput+"+";
-        calcInput="";
-        txfResult.setText(calcOutput);
+        txfResult.setText(act.operatorPress('+'));
         
     }//GEN-LAST:event_btnPlusActionPerformed
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+    private void btnEqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqActionPerformed
         
-        temp=new Operations().sum(temp,result);
-        result=BigDecimal.valueOf(0);
-        calcInput="";
-        calcOutput=""+temp;
-        txfResult.setText(""+temp);
-    }//GEN-LAST:event_jButton17ActionPerformed
+        txfResult.setText(act.eqPress());
+//        switch (flag){
+//            case 's': temp=new Operations().sum(temp,result);
+//                break;
+//            case 'r': temp=new Operations().subs(temp,result);
+//                break;
+//            case 'm': temp=new Operations().mult(temp,result);
+//                break;
+//            case 'd': temp=new Operations().div(temp,result);
+//                break;
+//            case 'n': txfResult.setText(""+temp);
+//                break;
+//        }
+//        result=BigDecimal.valueOf(0);
+//        calcInput="";
+//        calcOutput=""+temp;
+//        txfResult.setText(""+temp);
+//        flag='n';
+//        System.out.println(""+temp);
+    }//GEN-LAST:event_btnEqActionPerformed
+
+    private void btnMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusActionPerformed
+        txfResult.setText(act.operatorPress('-'));
+    }//GEN-LAST:event_btnMinusActionPerformed
+
+    private void btnMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultActionPerformed
+        txfResult.setText(act.operatorPress('*'));
+    }//GEN-LAST:event_btnMultActionPerformed
 
     /**
      * @param args the command line arguments
@@ -406,11 +401,11 @@ public class CalcUI extends javax.swing.JFrame {
     protected javax.swing.JButton btn9;
     protected javax.swing.JButton btnAC;
     protected javax.swing.JButton btnDiv;
+    protected javax.swing.JButton btnEq;
     protected javax.swing.JButton btnMinus;
     protected javax.swing.JButton btnMult;
     protected javax.swing.JButton btnPlus;
-    protected javax.swing.JButton jButton15;
-    protected javax.swing.JButton jButton17;
+    protected javax.swing.JButton btnPoint;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
